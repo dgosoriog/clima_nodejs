@@ -11,7 +11,7 @@ const argv = require('yargs').options({
     }
 }).argv;
 //Funcion para obtener el clima de una ciudad. Recibe como parametro el nombre de la ciudad
-//Utiliza funcion asincrona
+//Es una funcion asincrona
 let getInfo = async(direccion) => {
     try {
         let ubc = await ubicacion.getLugarLatLong(direccion);
