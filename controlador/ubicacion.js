@@ -1,5 +1,6 @@
-const axios = require('axios');
-
+const axios = require('axios');//importar libreria axios
+//Funcion para obtener la latitud y longitud de una ciudad.Recibe el nombre de la ciudad como parametro
+//Es una funcion asincrona
 const getCiudadLatLon = async(nombre) => {
     const ciudad = encodeURI(nombre);
     //crear instancia para la API
@@ -12,18 +13,20 @@ const getCiudadLatLon = async(nombre) => {
     //     console.log('Error', err);
     // });
     if (resp.data.Results.length === 0) {
-        throw new Error('No hay resultados');
+        throw new Error(`No existe resultados para ${nombre}`);
     }
     const data = resp.data.Results[0];
     const name = data.name;
     const lat = data.lat;
     const lon = data.lon;
+    //Retorna los datos en formato JSON
     return {
         name,
         lat,
         lon
     }
 }
+//Exportar el modulo
 module.exports = {
     getCiudadLatLon
 }
